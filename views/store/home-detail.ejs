@@ -1,0 +1,56 @@
+<%- include('../partials/head') %>
+
+<body class="bg-gray-100">
+
+  <%- include('../partials/nav') %>
+
+  <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-4xl">
+
+    <h2 class="text-3xl font-bold text-gray-800 mb-6">
+      Home Detail of<%= home.houseName %>
+    </h2>
+
+    <img
+      src="<%= imageUrl(home.photo) %>"
+      alt="<%= home.houseName %>"
+      class="w-full h-80 object-cover rounded-lg mb-6"
+    >
+
+    <div class="space-y-4">
+
+      <p class="text-lg text-gray-700">
+        <strong>Location:</strong>
+        <%= home.location %>
+      </p>
+
+      <p class="text-lg text-gray-700">
+        <strong>Price:</strong>
+        ₹<%= home.price %> / night
+      </p>
+
+      <p class="text-lg text-gray-700">
+        <strong>Rating:</strong>
+        ⭐ <%= home.rating %>
+      </p>
+
+      <div>
+
+        <h3 class="text-xl font-bold text-gray-800 mb-2">
+          Description
+        </h3>
+
+        <p class="text-gray-600">
+          <%= home.description %>
+        </p>
+
+      </div>
+
+      <%- include('../partials/favourite') %>
+
+    </div>
+
+  </main>
+
+</body>
+
+</html>

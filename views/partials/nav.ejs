@@ -1,0 +1,200 @@
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+  <nav
+    class="max-w-7xl mx-auto px-4 lg:px-8 min-h-20 py-3 flex flex-wrap items-center justify-between gap-3"
+  >
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 group">
+
+      <div
+        class="w-9 h-9 bg-red-500 rounded-xl flex items-center justify-center shadow-sm group-hover:bg-red-600 transition"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5 text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2.5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 3c-3.5 0-6.2 3.1-6.2 6.8 0 2.4 1.2 4.4 2.7 6.2L12 21l3.5-5c1.5-1.8 2.7-3.8 2.7-6.2C18.2 6.1 15.5 3 12 3z"
+          />
+        </svg>
+      </div>
+
+      <span class="text-2xl font-bold tracking-tight text-red-500">
+        airbnb
+      </span>
+
+    </a>
+
+
+    <!-- Right Side -->
+    <ul class="flex flex-wrap items-center justify-end gap-4">
+
+      <% if (isLoggedIn) { %>
+
+        <!-- ================= GUEST ================= -->
+        <% if (!user || user.userType !== "host") { %>
+
+          <!-- Home -->
+          <li>
+            <a
+              href="/"
+              class="px-3 py-2 text-sm font-medium text-gray-700 rounded-full hover:bg-gray-100 transition"
+            >
+              Home
+            </a>
+          </li>
+
+          <!-- Booking -->
+          <li>
+            <a
+              href="/booking"
+              class="px-3 py-2 text-sm font-medium text-gray-700 rounded-full hover:bg-gray-100 transition"
+            >
+              Booking
+            </a>
+          </li>
+
+          <!-- Favourites -->
+          <li>
+            <a
+              href="/favourites"
+              class="px-3 py-2 text-sm font-medium text-gray-700 rounded-full hover:bg-gray-100 transition"
+            >
+              Favourites
+            </a>
+          </li>
+
+          <!-- Index -->
+          <li>
+            <a
+              href="/index"
+              class="px-3 py-2 text-sm font-medium text-gray-700 rounded-full hover:bg-gray-100 transition"
+            >
+              Index
+            </a>
+          </li>
+
+
+        <!-- ================= HOST ================= -->
+        <% } else if (user && user.userType === "host") { %>
+
+          <!-- Add Home -->
+          <li>
+            <a
+              href="/host/add-home"
+              class="px-3 py-2 text-sm font-medium text-gray-700 rounded-full hover:bg-gray-100 transition"
+            >
+              Add Home
+            </a>
+          </li>
+
+          <!-- Host Home -->
+          <li>
+            <a
+              href="/host/host-home-list"
+              class="px-3 py-2 text-sm font-medium text-gray-700 rounded-full hover:bg-gray-100 transition"
+            >
+              Host Home
+            </a>
+          </li>
+
+        <% } %>
+
+
+        <!-- ================= ACCOUNT ================= -->
+        <li class="ml-1">
+
+          <div
+            class="flex items-center border border-gray-300 rounded-full p-1 pl-3 bg-white shadow-sm"
+          >
+
+            <div class="hidden sm:block mr-3">
+              <span class="text-sm font-semibold text-gray-700">
+                Account
+              </span>
+            </div>
+
+            <div
+              class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 text-gray-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M20 21a8 8 0 00-16 0M12 13a4 4 0 100-8 4 4 0 000 8z"
+                />
+              </svg>
+            </div>
+
+          </div>
+
+        </li>
+
+
+        <!-- ================= LOGOUT ================= -->
+        <li>
+          <form action="/logout" method="POST">
+
+            <button
+              type="submit"
+              class="px-4 py-2 text-sm font-semibold text-gray-700 hover:text-red-500 transition"
+            >
+              Logout
+            </button>
+
+          </form>
+        </li>
+
+
+      <!-- ================= NOT LOGGED IN ================= -->
+      <% } else { %>
+
+        <!-- Airbnb your home -->
+        <li>
+          <a
+            href="/host/add-home"
+            class="hidden sm:block px-4 py-2 text-sm font-semibold text-gray-700 rounded-full hover:bg-gray-100 transition"
+          >
+            Airbnb your home
+          </a>
+        </li>
+
+        <!-- Sign Up -->
+        <li>
+          <a
+            href="/signup"
+            class="px-4 py-2 text-sm font-semibold text-gray-700 rounded-full hover:bg-gray-100 transition"
+          >
+            Sign up
+          </a>
+        </li>
+
+        <!-- Login -->
+        <li>
+          <a
+            href="/login"
+            class="bg-red-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-red-600 shadow-sm hover:shadow-md transition"
+          >
+            Log in
+          </a>
+        </li>
+
+      <% } %>
+
+    </ul>
+
+  </nav>
+</header>

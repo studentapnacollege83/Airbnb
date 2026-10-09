@@ -1,0 +1,321 @@
+<%- include('../partials/head') %>
+
+<body class="bg-gray-100 min-h-screen">
+
+  <%- include('../partials/nav') %>
+
+  <main class="min-h-[calc(100vh-64px)] flex justify-center items-center px-4 py-10">
+
+    <div class="w-full max-w-xl">
+
+      <!-- Card -->
+      <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+
+        <!-- Header -->
+        <div class="bg-red-500 px-8 py-8 text-center text-white">
+
+          <div class="w-16 h-16 mx-auto rounded-full bg-white/20 flex items-center justify-center mb-4">
+            <i class="fas fa-user-plus text-2xl"></i>
+          </div>
+
+          <h1 class="text-3xl font-bold">
+            Create Your Account
+          </h1>
+
+          <p class="text-red-100 mt-2">
+            Join Airbnb and find your perfect stay
+          </p>
+
+        </div>
+
+          <%- include('../partials/errors') %>
+        
+
+
+          <!-- FORM -->
+          <form action="/signup" method="POST" class="space-y-5">
+
+
+            <!-- FIRST + LAST NAME -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+              <!-- First Name -->
+              <div>
+
+                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                  First Name
+                </label>
+
+                <input
+                  type="text"
+                  name="firstName"
+                  value="<%= oldInput.firstName || '' %>"
+                  placeholder="First name"
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 rounded-xl
+                         focus:outline-none focus:ring-2 focus:ring-red-400
+                         focus:border-red-400 transition"
+                >
+
+              </div>
+
+
+              <!-- Last Name -->
+              <div>
+
+                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                  Last Name
+                </label>
+
+                <input
+                  type="text"
+                  name="lastName"
+                  value="<%= oldInput.lastName || '' %>"
+                  placeholder="Last name"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-xl
+                         focus:outline-none focus:ring-2 focus:ring-red-400
+                         focus:border-red-400 transition"
+                >
+
+              </div>
+
+            </div>
+
+
+            <!-- EMAIL -->
+            <div>
+
+              <label class="block text-sm font-semibold text-gray-700 mb-2">
+                Email Address
+              </label>
+
+              <input
+                type="email"
+                name="email"
+                value="<%= oldInput.email || '' %>"
+                placeholder="example@gmail.com"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-xl
+                       focus:outline-none focus:ring-2 focus:ring-red-400
+                       focus:border-red-400 transition"
+              >
+
+            </div>
+
+
+            <!-- PASSWORD -->
+            <div>
+
+              <label class="block text-sm font-semibold text-gray-700 mb-2">
+                Password
+              </label>
+
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-xl
+                       focus:outline-none focus:ring-2 focus:ring-red-400
+                       focus:border-red-400 transition"
+              >
+
+              <p class="text-xs text-gray-500 mt-2">
+                8+ characters with uppercase, lowercase, number and special character.
+              </p>
+
+            </div>
+
+
+            <!-- CONFIRM PASSWORD -->
+            <div>
+
+              <label class="block text-sm font-semibold text-gray-700 mb-2">
+                Confirm Password
+              </label>
+
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm your password"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-xl
+                       focus:outline-none focus:ring-2 focus:ring-red-400
+                       focus:border-red-400 transition"
+              >
+
+            </div>
+
+
+            <!-- USER TYPE -->
+            <div>
+
+              <p class="text-sm font-semibold text-gray-700 mb-3">
+                Register As
+              </p>
+
+
+              <div class="grid grid-cols-2 gap-4">
+
+
+                <!-- GUEST -->
+                <label class="cursor-pointer">
+
+                  <input
+                    type="radio"
+                    name="userType"
+                    value="guest"
+                    class="peer sr-only"
+                    <%= oldInput.userType === "guest" ? "checked" : "" %>
+                  >
+
+                  <div class="border-2 border-gray-200 rounded-2xl p-5
+                              text-center transition-all duration-200
+                              hover:border-red-300 hover:bg-red-50
+
+                              peer-checked:border-red-500
+                              peer-checked:bg-red-50
+                              peer-checked:shadow-md">
+
+                    <div class="w-12 h-12 mx-auto rounded-full
+                                bg-gray-100 flex items-center justify-center
+                                peer-checked:bg-red-100">
+
+                      <i class="fas fa-house-user text-xl text-gray-500"></i>
+
+                    </div>
+
+                    <h3 class="font-bold text-gray-800 mt-3">
+                      Guest
+                    </h3>
+
+                    <p class="text-xs text-gray-500 mt-1">
+                      Find a place to stay
+                    </p>
+
+                  </div>
+
+                </label>
+
+
+                <!-- HOST -->
+                <label class="cursor-pointer">
+
+                  <input
+                    type="radio"
+                    name="userType"
+                    value="host"
+                    class="peer sr-only"
+                    <%= oldInput.userType === "host" ? "checked" : "" %>
+                  >
+
+                  <div class="border-2 border-gray-200 rounded-2xl p-5
+                              text-center transition-all duration-200
+                              hover:border-red-300 hover:bg-red-50
+
+                              peer-checked:border-red-500
+                              peer-checked:bg-red-50
+                              peer-checked:shadow-md">
+
+                    <div class="w-12 h-12 mx-auto rounded-full
+                                bg-gray-100 flex items-center justify-center">
+
+                      <i class="fas fa-building text-xl text-gray-500"></i>
+
+                    </div>
+
+                    <h3 class="font-bold text-gray-800 mt-3">
+                      Host
+                    </h3>
+
+                    <p class="text-xs text-gray-500 mt-1">
+                      List your property
+                    </p>
+
+                  </div>
+
+                </label>
+
+              </div>
+
+            </div>
+
+
+            <!-- TERMS -->
+            <div class="flex items-start gap-3 pt-1">
+
+              <input
+                type="checkbox"
+                name="terms"
+                id="terms"
+                required
+                class="w-4 h-4 mt-1 accent-red-500"
+              >
+
+              <label
+                for="terms"
+                class="text-sm text-gray-600 cursor-pointer"
+              >
+                I agree to the
+                <span class="font-semibold text-red-500">
+                  Terms and Conditions
+                </span>
+              </label>
+
+            </div>
+
+
+            <!-- BUTTON -->
+            <button
+              type="submit"
+              class="w-full bg-red-500 hover:bg-red-600
+                     text-white font-bold py-3.5 rounded-xl
+                     shadow-md hover:shadow-lg
+                     active:scale-[0.98]
+                     transition-all duration-200"
+            >
+
+              <i class="fas fa-user-plus mr-2"></i>
+
+              Create Account
+
+            </button>
+
+
+          </form>
+
+
+          <!-- LOGIN -->
+          <div class="text-center mt-7 pt-6 border-t border-gray-200">
+
+            <p class="text-sm text-gray-500">
+              Already have an account?
+            </p>
+
+            <a
+              href="/login"
+              class="inline-block mt-2 text-red-500
+                     font-semibold hover:text-red-600 transition"
+            >
+              Login to your account
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Bottom -->
+      <p class="text-center text-xs text-gray-400 mt-5">
+        By creating an account, you agree to our terms and policies.
+      </p>
+
+    </div>
+
+  </main>
+
+</body>
+
+</html>

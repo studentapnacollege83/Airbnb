@@ -1,0 +1,227 @@
+<%- include('../partials/head') %>
+
+<body class="bg-gray-50 min-h-screen">
+
+<%- include('../partials/nav') %>
+
+  <main class="max-w-2xl mx-auto px-4 py-10">
+
+```
+<div class="bg-white border border-gray-200 rounded-2xl shadow-sm">
+
+  <!-- Header -->
+  <div class="px-8 pt-8 pb-6 border-b border-gray-100">
+
+    <h2 class="text-2xl font-semibold text-gray-900">
+      <%= editing ? "Edit your home" : "Add your home" %>
+    </h2>
+
+    <p class="text-sm text-gray-500 mt-1">
+      <%= editing
+        ? "Update your property details."
+        : "Share your place with guests."
+      %>
+    </p>
+
+  </div>
+
+
+  <!-- Form -->
+  <form
+    action="<%= editing ? '/host/edit-home' : '/host/add-home' %>"
+    method="POST"
+    enctype="multipart/form-data"
+    class="px-8 py-7 space-y-6"
+  >
+
+    <% if (editing) { %>
+
+      <input
+        type="hidden"
+        name="id"
+        value="<%= home._id %>"
+      >
+
+    <% } %>
+
+
+    <!-- House Name -->
+    <div>
+
+      <label
+        for="houseName"
+        class="block text-sm font-medium text-gray-800 mb-2"
+      >
+        House name
+      </label>
+
+      <input
+        id="houseName"
+        type="text"
+        name="houseName"
+        value="<%= editing ? home.houseName : '' %>"
+        placeholder="Enter your house name"
+        required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm outline-none transition focus:border-gray-900 focus:ring-1 focus:ring-gray-900"
+      >
+
+    </div>
+
+
+    <!-- Price + Rating -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+      <div>
+
+        <label
+          for="price"
+          class="block text-sm font-medium text-gray-800 mb-2"
+        >
+          Price per night
+        </label>
+
+        <div class="relative">
+
+          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm">
+            ₹
+          </span>
+
+          <input
+            id="price"
+            type="number"
+            name="price"
+            value="<%= editing ? home.price : '' %>"
+            placeholder="2500"
+            required
+            class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg text-sm outline-none transition focus:border-gray-900 focus:ring-1 focus:ring-gray-900"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <label
+          for="rating"
+          class="block text-sm font-medium text-gray-800 mb-2"
+        >
+          Rating
+        </label>
+
+        <input
+          id="rating"
+          type="number"
+          step="0.1"
+          min="0"
+          max="5"
+          name="rating"
+          value="<%= editing ? home.rating : '' %>"
+          placeholder="4.5"
+          required
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm outline-none transition focus:border-gray-900 focus:ring-1 focus:ring-gray-900"
+        >
+
+      </div>
+
+    </div>
+
+
+    <!-- Location -->
+    <div>
+
+      <label
+        for="location"
+        class="block text-sm font-medium text-gray-800 mb-2"
+      >
+        Location
+      </label>
+
+      <input
+        id="location"
+        type="text"
+        name="location"
+        value="<%= editing ? home.location : '' %>"
+        placeholder="Enter your location"
+        required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm outline-none transition focus:border-gray-900 focus:ring-1 focus:ring-gray-900"
+      >
+
+    </div>
+
+
+    <!-- Photo -->
+    <div>
+
+      <label
+        for="photo"
+        class="block text-sm font-medium text-gray-800 mb-2"
+      >
+        Property photo
+      </label>
+
+      <input
+        id="photo"
+        type="file"
+        name="photo"
+        accept="image/jpg,image/jpeg,image/png"
+        <%= editing ? '' : 'required' %>
+        class="w-full text-sm text-gray-600 border border-gray-300 rounded-lg p-2.5 bg-white file:mr-4 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:bg-gray-100 file:text-gray-700 file:text-sm file:font-medium hover:file:bg-gray-200"
+      >
+
+      <% if (editing) { %>
+
+        <p class="text-xs text-gray-400 mt-2">
+          Leave empty if you don't want to change the current photo.
+        </p>
+
+      <% } %>
+
+    </div>
+
+
+    <!-- Description -->
+    <div>
+
+      <label
+        for="description"
+        class="block text-sm font-medium text-gray-800 mb-2"
+      >
+        Description
+      </label>
+
+      <textarea
+        id="description"
+        name="description"
+        rows="4"
+        placeholder="Describe your home..."
+        required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm outline-none resize-none transition focus:border-gray-900 focus:ring-1 focus:ring-gray-900"
+      ><%= editing ? home.description : '' %></textarea>
+
+    </div>
+
+
+    <!-- Button -->
+    <div class="pt-2">
+
+      <button
+        type="submit"
+        class="w-full bg-red-500 text-white py-3 rounded-lg text-sm font-semibold hover:bg-red-600 transition"
+      >
+        <%= editing ? "Update home" : "Add home" %>
+      </button>
+
+    </div>
+
+  </form>
+
+</div>
+```
+
+  </main>
+
+</body>
+
+</html>

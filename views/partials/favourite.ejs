@@ -1,0 +1,23 @@
+<div class="mt-4">
+
+  <form
+    action="/favourites"
+    method="POST"
+  >
+
+    <input
+      type="hidden"
+      name="homeId"
+      value="<%= home._id %>"
+    >
+
+    <button
+      type="submit"
+      class="bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-600"
+    >
+      ❤️ Add to Favourite
+    </button>
+
+  </form>
+
+</div>

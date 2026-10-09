@@ -1,0 +1,86 @@
+<%- include('../partials/head') %>
+
+<body class="bg-gray-100">
+
+  <%- include('../partials/nav') %>
+
+  <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-6xl">
+
+    <h2 class="text-3xl text-red-500 font-bold text-center mb-8">
+      Favourite Homes
+    </h2>
+
+    <% if (favouriteHomes.length === 0) { %>
+
+      <p class="text-center text-gray-600 text-lg">
+        No favourite homes yet.
+      </p>
+
+    <% } else { %>
+
+      <div class="flex flex-wrap justify-center gap-6">
+
+        <% favouriteHomes.forEach(home => { %>
+
+          <div class="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-sm">
+
+            <img
+              src="<%= imageUrl(home.photo) %>"
+              alt="<%= home.houseName %>"
+              class="w-full h-48 object-cover"
+            >
+
+            <div class="p-4">
+
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                <%= home.houseName %>
+              </h3>
+
+              <p class="text-gray-600 mb-2">
+                📍 <%= home.location %>
+              </p>
+
+              <p class="text-red-500 font-bold mb-4">
+                ₹<%= home.price %> / night
+              </p>
+
+              <div class="flex gap-2">
+
+                <a
+                  href="/homes/<%= home._id %>"
+                  class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                >
+                  View
+                </a>
+
+                <form
+                  action="/favourites/delete/<%= home._id %>"
+                  method="POST"
+                >
+
+                  <button
+                    type="submit"
+                    class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                  >
+                    Remove
+                  </button>
+
+                </form>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        <% }) %>
+
+      </div>
+
+    <% } %>
+
+  </main>
+
+</body>
+
+</html>
