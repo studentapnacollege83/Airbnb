@@ -4,8 +4,8 @@
   <%- include('../partials/nav') %>
 
   <main class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
-    <div class="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_25px_60px_rgba(15,23,42,0.08)]">
-      <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-rose-900 px-7 py-8 text-white">
+    <div class="overflow-hidden rounded-4xl border border-slate-200 bg-white shadow-[0_25px_60px_rgba(15,23,42,0.08)]">
+      <div class="bg-linear-to-r from-slate-900 via-slate-800 to-rose-900 px-7 py-8 text-white">
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-rose-300">Host with confidence</p>
         <h1 class="mt-2 text-3xl font-black tracking-tight"><%= editing ? 'Edit your home' : 'Add your home' %></h1>
         <p class="mt-2 text-slate-300"><%= editing ? 'Update your property details and keep your listing fresh.' : 'Share a memorable place with guests from around the world.' %></p>
@@ -54,7 +54,7 @@
           <textarea id="description" name="description" rows="5" placeholder="Describe your home..." required class="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-rose-400 focus:bg-white focus:ring-4 focus:ring-rose-100"><%= editing ? home.description : '' %></textarea>
         </div>
 
-        <button type="submit" class="w-full rounded-2xl bg-gradient-to-r from-rose-500 to-red-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-rose-200 transition hover:shadow-xl hover:shadow-rose-200"><%= editing ? 'Update home' : 'Add home' %></button>
+        <button type="submit" class="w-full rounded-2xl bg-linear-to-r from-rose-500 to-red-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-rose-200 transition hover:shadow-xl hover:shadow-rose-200"><%= editing ? 'Update home' : 'Add home' %></button>
       </form>
     </div>
   </main>

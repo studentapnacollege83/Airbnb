@@ -1,12 +1,12 @@
 <%- include('../partials/head') %>
 
-<body class="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(244,63,94,0.12),_transparent_35%),linear-gradient(180deg,#fff_0%,#f8fafc_100%)] text-slate-800">
+<body class="min-h-screen bg-[radial-gradient(circle_at_top,rgba(244,63,94,0.12),transparent_35%),linear-gradient(180deg,#fff_0%,#f8fafc_100%)] text-slate-800">
   <%- include('../partials/nav') %>
 
   <main class="flex min-h-[calc(100vh-80px)] items-center justify-center px-4 py-12">
     <div class="w-full max-w-md">
-      <div class="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_25px_60px_rgba(15,23,42,0.08)]">
-        <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-rose-900 px-8 py-8 text-white">
+      <div class="overflow-hidden rounded-4xl border border-slate-200 bg-white shadow-[0_25px_60px_rgba(15,23,42,0.08)]">
+        <div class="bg-linear-to-r from-slate-900 via-slate-800 to-rose-900 px-8 py-8 text-white">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-rose-300">Welcome back</p>
           <h1 class="mt-2 text-3xl font-black tracking-tight">Log in</h1>
           <p class="mt-2 text-slate-300">Enter your details to continue your stay.</p>
@@ -29,7 +29,7 @@
               <input id="password" type="password" name="password" placeholder="Enter your password" autocomplete="current-password" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-rose-400 focus:bg-white focus:ring-4 focus:ring-rose-100" required>
             </div>
 
-            <button type="submit" class="w-full rounded-2xl bg-gradient-to-r from-rose-500 to-red-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-rose-200 transition hover:shadow-xl hover:shadow-rose-200">Log in</button>
+            <button type="submit" class="w-full rounded-2xl bg-linear-to-r from-rose-500 to-red-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-rose-200 transition hover:shadow-xl hover:shadow-rose-200">Log in</button>
           </form>
 
           <div class="my-7 flex items-center gap-4">
