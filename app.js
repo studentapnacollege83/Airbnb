@@ -17,7 +17,7 @@ const storeRouter = require("./routes/storeRouter");
 const hostRouter = require("./routes/hostRouter");
 const authRouter = require("./routes/authRouter");
 
-const DB_PATH = process.env.DB_PATH || "mongodb+srv://Ankitsharma:sharmaji7878@ankitsharma.vbjoyvy.mongodb.net/airbnb?appName=AnkitSharma";
+const DB_PATH = process.env.MONGODB_URI || "mongodb+srv://Ankitsharma:sharmaji7878@ankitsharma.vbjoyvy.mongodb.net/airbnb?appName=AnkitSharma";
 
 const rootDir = require("./utils/pathUtil");
 const errorsController = require("./controllers/errors");
