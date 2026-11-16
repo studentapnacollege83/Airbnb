@@ -1,6 +1,10 @@
 /* cd "C:\Users\ADMIN\Desktop\Airbnb image upload" */
+//npx @tailwindcss/cli -i ./input.css -o ./public/output.css
+
 //run check guest if error
 //revise from codex
+require("dotenv").config();
+
 const path = require("path");
 const fs = require("fs");
 const express = require("express");
@@ -13,8 +17,7 @@ const storeRouter = require("./routes/storeRouter");
 const hostRouter = require("./routes/hostRouter");
 const authRouter = require("./routes/authRouter");
 
-const DB_PATH =
-  "mongodb+srv://Ankitsharma:sharmaji7878@ankitsharma.vbjoyvy.mongodb.net/airbnb?appName=AnkitSharma";
+const DB_PATH = process.env.DB_PATH || "mongodb+srv://Ankitsharma:sharmaji7878@ankitsharma.vbjoyvy.mongodb.net/airbnb?appName=AnkitSharma";
 
 const rootDir = require("./utils/pathUtil");
 const errorsController = require("./controllers/errors");
@@ -88,6 +91,11 @@ store:store,
 app.use((req, res, next) => {
   res.locals.isLoggedIn = Boolean(req.session.isLoggedIn);
   res.locals.user = req.session.user || {};
+  res.locals.imageUrl = (photo) => {
+    if (!photo) return "/images/house1.png";
+    if (/^https?:\/\//i.test(photo) || photo.startsWith("/")) return photo;
+    return `/uploads/${path.basename(photo)}`;
+  };
   next();
 });
 
@@ -124,7 +132,7 @@ app.use("/host", hostRouter);
 app.use(errorsController.pageNotFound);
 
 // Server
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 
 mongoose
