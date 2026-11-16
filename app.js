@@ -124,7 +124,7 @@ app.use("/host", hostRouter);
 app.use(errorsController.pageNotFound);
 
 // Server
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 
 mongoose
