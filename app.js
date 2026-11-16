@@ -28,6 +28,12 @@ fs.mkdirSync(uploadDir, { recursive: true });
 
 const app = express();
 
+app.locals.imageUrl = (photo) => {
+  if (!photo) return "/images/house1.png";
+  if (/^https?:\/\//i.test(photo) || photo.startsWith("/")) return photo;
+  return `/uploads/${path.basename(photo)}`;
+};
+
 // EJS
 app.set("view engine", "ejs");
 app.set("views", path.join(rootDir, "views"));
@@ -91,11 +97,6 @@ store:store,
 app.use((req, res, next) => {
   res.locals.isLoggedIn = Boolean(req.session.isLoggedIn);
   res.locals.user = req.session.user || {};
-  res.locals.imageUrl = (photo) => {
-    if (!photo) return "/images/house1.png";
-    if (/^https?:\/\//i.test(photo) || photo.startsWith("/")) return photo;
-    return `/uploads/${path.basename(photo)}`;
-  };
   next();
 });
 
