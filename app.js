@@ -1,8 +1,5 @@
 /* cd "C:\Users\ADMIN\Desktop\Airbnb image upload" */
 //npx @tailwindcss/cli -i ./input.css -o ./public/output.css
-
-//run check guest if error
-//revise from codex
 require("dotenv").config();
 
 const path = require("path");
